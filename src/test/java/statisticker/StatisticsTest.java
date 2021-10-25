@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 import statisticker.Statistics;
 public class StatisticsTest 
-{
-    public int check = 0;
+{public int check = 0;
     @Test
     public void reportsAverageMinMaxx()
     {
