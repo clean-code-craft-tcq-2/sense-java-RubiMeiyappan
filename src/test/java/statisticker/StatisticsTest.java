@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 import statisticker.Statistics;
 public class StatisticsTest 
-{public int check = 0;
+{
+    public int check = 0;
     @Test
     public void reportsAverageMinMaxx()
     {
@@ -40,20 +41,18 @@ public class StatisticsTest
     }
     @Test
     public void reportsAlertsIfMaxIsMoreThanThreshold()
-    {
+    {       
+        EmailAlert emailAlerter = new EmailAlert();
+        LEDAlert ledAlerter = new LEDAlert();
         float maxThreshold = 10.2f;
         StatsChecker checker = new StatsChecker(maxThreshold);
 
         Float[] numbers = {11.5f, 6.9f, 7.5f, 6.6f};
         List<Float> numberList = Arrays.asList(numbers);
         checker.checkAndAlert(numberList);
-        if (check==1)
-        {
-            EmailAlert emailAlerter = new EmailAlert();
-            LEDAlert ledAlerter = new LEDAlert();
-            assertTrue(emailAlerter.emailSent);
-            assertTrue(ledAlerter.ledGlows);
-        }
+        
+        assertTrue(emailAlerter.emailSent);
+        assertTrue(ledAlerter.ledGlows);
     }
 
     /**
@@ -81,23 +80,29 @@ public class StatisticsTest
         }
     }
 
-    private static class LEDAlert 
+    public class LEDAlert 
     {
 
-        private boolean ledGlows;
+        public boolean ledGlows;
         public LEDAlert() 
         {
-            ledGlows = true;
+            if(check == 1)
+            {    
+                ledGlows = true;
+            }
         }
     }
 
-    private static class EmailAlert 
+    public class EmailAlert 
     {
 
-        private boolean emailSent;
+        public boolean emailSent;
         public EmailAlert() 
         {
-            emailSent = true;
+           if(check == 1)
+           {  
+                emailSent = true;
+           }
         }
     }
 }

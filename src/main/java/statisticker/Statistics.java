@@ -1,10 +1,10 @@
 package statisticker;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Statistics 
-{static Float average,min,max,empty_NAN_value;
+{
+    static Float average,min,max,empty_NAN_value;
     public static Statistics getStatistics(List<Float> numbers) 
     {
         //implement the computation of statistics here
@@ -36,4 +36,3 @@ public class Statistics
     }
     
 }
-
